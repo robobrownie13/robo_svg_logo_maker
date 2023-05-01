@@ -12,3 +12,45 @@ THEN an SVG file is created named `logo.svg`
 AND the output text "Generated logo.svg" is printed in the command line
 WHEN I open the `logo.svg` file in a browser
 THEN I am shown a 300x200 pixel image that matches the criteria I entered*/
+const inquirer = require("inquirer");
+
+const fs = require("fs").promises;
+const { Triangle, Square, Circle } = require("./lib/shapes");
+const { writeFile } = require("fs");
+
+const promptUser = () => {
+  return inquirer.prompt([
+    {
+      type: "input",
+      name: "logo_text",
+      message: "Enter up to three characters for your logo text.",
+    },
+    {
+      type: "input",
+      name: "logo_text_color",
+      message:
+        "Enter text color preference. (Only color keyword or hexidecimals will render properly)",
+    },
+    {
+      type: "list",
+      name: "logo_shape",
+      message: "Select logo shape.",
+      choices: ["Triangle", "Square", "Circle"],
+    },
+    {
+      type: "input",
+      name: "logo_shape_color",
+      message:
+        "Enter shape color preference. (Only color keyword or hexidecimals will render properly)",
+    },
+  ]);
+};
+
+const init = () => {
+  promptUser()
+    .then((res) => writeFile(`logo_${res.logo_text}.svg`, res))
+    .then(() => console.log(`\n"Sucessfully created logo!"`))
+    .catch((err) => console.error(err));
+};
+
+init();

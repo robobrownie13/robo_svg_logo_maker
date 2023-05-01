@@ -1,16 +1,17 @@
  <svg
       width="300"
       height="200"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <circle
-        cx="25"
-        cy="75"
-        r="20"
-        stroke="red"
-        fill="transparent"
-        stroke-width="5"
+        cx="150"
+        cy="115"
+        r="100"
+        fill="red"
       />
-      <ellipse cx="75" cy="75" rx="20" ry="5" stroke="green" fill="green" />
+      <rect 
+      x="73" 
+      y="40" 
+      width="160" 
+      height="160" 
+      fill="black" />
     </svg>
